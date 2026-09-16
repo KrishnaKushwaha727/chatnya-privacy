@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal & Compliance Center | Chatnya by Krishna Developments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="chatnya_icon.png">
+  <link rel="apple-touch-icon" href="chatnya_icon.png">
+
+  <style>
+    :root {
+      --bg-base: #0B0E14;
+      --bg-surface: #141824;
+      --bg-card: #1C2133;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-gold: rgba(255, 215, 0, 0.35);
+      --primary: #6366F1;
+      --primary-gradient: linear-gradient(135deg, #6366F1 0%, #A855F7 100%);
+      --gold: #FFD700;
+      --accent-green: #10B981;
+      --accent-cyan: #06B6D4;
+      --text-main: #F9FAFB;
+      --text-muted: #9CA3AF;
+      --text-dim: #6B7280;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding-bottom: 80px;
+    }
+
+    header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      padding: 24px 32px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+    }
+
+    .header-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+    }
+
+    .brand h1 {
+      font-size: 20px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 0%, #A855F7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand span {
+      font-size: 12px;
+      color: var(--gold);
+      font-weight: 700;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 32px auto;
+      padding: 0 24px;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(168,85,247,0.08) 100%);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-banner img {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      border: 2.5px solid var(--gold);
+      object-fit: cover;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+    }
+
+    .legal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      margin-bottom: 32px;
+      display: none;
+    }
+
+    .legal-card.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .legal-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .legal-meta {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .legal-section {
+      margin-bottom: 26px;
+    }
+
+    .legal-section h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #818CF8;
+      margin-bottom: 8px;
+    }
+
+    .legal-section p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .legal-section ul {
+      margin-left: 20px;
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 14.5px;
+      line-height: 1.7;
+    }
+
+    .badge-gold {
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.35);
+      color: var(--gold);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: var(--text-dim);
+      font-size: 13px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <img src="chatnya_icon.png" alt="Chatnya">
+        <div>
+          <h1>Chatnya Legal Center</h1>
+          <span>👑 KRISHNA DEVELOPMENTS • CBSE AFFILIATION NO. 2133367</span>
+        </div>
+      </div>
+      <div class="nav-tabs">
+        <button class="tab-btn active" onclick="showTab('tc')">📜 Terms & Conditions</button>
+        <button class="tab-btn" onclick="showTab('privacy')">🔒 Privacy Policy</button>
+        <button class="tab-btn" onclick="showTab('rules')">⚖️ 10 Community Rules</button>
+        <button class="tab-btn" onclick="showTab('deleted')">🛡️ Deleted Chat Policy</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-banner">
+      <img src="krishna_dev_logo.png" alt="Krishna Kushwaha">
+      <div style="flex: 1;">
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px;">
+          <h2 style="font-size: 18px; font-weight: 800;">Official Governance, Safety & Privacy Policies</h2>
+          <span class="badge-gold">👑 Lead Architect: Krishna Kushwaha</span>
+        </div>
+        <p style="font-size: 13.5px; color: var(--text-muted);">
+          Engineered & Maintained by <strong>Krishna Developments</strong> (Sonbhadra, Uttar Pradesh, India) for collaborative learners across India.
+        </p>
+      </div>
+    </div>
+
+    <!-- TAB 1: TERMS & CONDITIONS -->
+    <div class="legal-card active" id="tab-tc">
+      <h2 class="legal-title">📜 Terms and Conditions</h2>
+      <div class="legal-meta">Version 2.5 • Effective Date: September 15, 2026 • Governing Law: IT Act, 2000 & Digital Intermediary Rules (India)</div>
+
+      <div class="legal-section">
+        <h3>1. Acceptance of Terms & Ownership</h3>
+        <p>By downloading, registering, or using the Chatnya mobile application, progressive web app, or administrative consoles, you unconditionally agree to these Terms and Conditions. Chatnya is engineered, owned, and maintained by <strong>Krishna Developments</strong>, founded and architected by <strong>Krishna Kushwaha</strong> (Sonbhadra, Uttar Pradesh, India).</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>2. Eligibility & Code of Conduct</h3>
+        <p>Chatnya is created strictly for educational enrichment, peer discussions, and subject study circles. Users under 18 must use the platform with parental awareness. Users represent and warrant that their registration details are accurate and truthful.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>3. Zero-Tolerance Anti-Bullying Mandate</h3>
+        <p>Chatnya maintains an uncompromising <strong>ZERO-TOLERANCE</strong> policy regarding cyberbullying, harassment, abusive remarks, sexual misconduct, trolling, or intimidation. Any user engaging in bullying will face instant and permanent account termination.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>4. A1-Z26 Cipher Messaging & Content Ownership</h3>
+        <p>Direct messages are protected via proprietary A1-Z26 numeric ciphers and restricted cloud Firestore access rules. Students retain copyright over their academic study notes and creative questions. Uploading pirated textbooks or commercial exam answer keys is prohibited.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>5. 7-Day Account Deletion & Complete Data Purge</h3>
+        <p>Users may request account deletion at any time via Settings by confirming with <strong>"DELETE MY ACCOUNT"</strong>. Deletion enters an automatic <strong>7-day grace period</strong> during which the user may log in at any time to instantly restore their account with one tap. After 7 days, all user profile records, private chats, sent messages, posts, stories, usernames, and quiz attempts are permanently and irreversibly purged from our servers.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>6. Study Groups & Peer Decorum</h3>
+        <p>Study groups must be maintained around designated academic subjects. Creators are responsible for enforcing decorum. Sharing off-topic spam, malicious links, or inappropriate media results in group disbandment.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>7. Administrative Auditing & Jurisdiction</h3>
+        <p>Platform operators retain the right to inspect safety logs and act upon complaints. Legal disputes are subject to the exclusive jurisdiction of the competent courts in Sonbhadra, Uttar Pradesh, India.</p>
+      </div>
+    </div>
+
+    <!-- TAB 2: PRIVACY POLICY -->
+    <div class="legal-card" id="tab-privacy">
+      <h2 class="legal-title">🔒 Privacy Policy</h2>
+      <div class="legal-meta">Commitment: Absolute User Privacy • Zero Data Monetization • Google Cloud Infrastructure</div>
+
+      <div class="legal-section">
+        <h3>1. Information Collected</h3>
+        <p>We collect only data necessary for platform utility:</p>
+        <ul>
+          <li><strong>Authentication:</strong> Email address, unique @username, and display name.</li>
+          <li><strong>Academic Profile:</strong> Standard/Class (e.g. Class 9th, 10th, JEE/NEET), institution, and optional profile photo.</li>
+          <li><strong>Communications:</strong> A1-Z26 numeric encrypted messages and study group contributions.</li>
+          <li><strong>Push Notifications:</strong> Firebase Cloud Messaging (FCM) device tokens.</li>
+        </ul>
+      </div>
+
+      <div class="legal-section">
+        <h3>2. Zero Data Sale Guarantee</h3>
+        <p>Krishna Developments guarantees that user information is <strong>NEVER sold, rented, monetized, or shared</strong> with third-party advertisers, ad networks, or data brokers. The platform operates on educational integrity.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>3. Cryptographic Storage & Security</h3>
+        <p>All database transactions utilize Google Firebase multi-region cloud servers with SSL/TLS transport encryption and strict rule-based access controls. Messages are rendered in numeric cipher before transmission.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>4. Child & Minor Online Safety</h3>
+        <p>We comply fully with digital safety guidelines for minors and electronic communications protection frameworks. Parents and guardians have the right to inspect, correct, or request deletion of their child's account.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>5. 7-Day Deletion Grace Period</h3>
+        <p>Upon requesting account deletion, a 7-day grace period is initiated. The account can be restored at any point within the 7 days simply by logging in. When the 7 days expire, all personal data, chats, and messages are permanently eradicated.</p>
+      </div>
+    </div>
+
+    <!-- TAB 3: COMMUNITY RULES -->
+    <div class="legal-card" id="tab-rules">
+      <h2 class="legal-title">⚖️ 10 Golden Community Guidelines</h2>
+      <div class="legal-meta">Universal Code of Conduct for Chatnya Community Peers & Study Groups</div>
+
+      <div class="legal-section">
+        <h3>Rule 1: Mutual Respect & Dignity</h3>
+        <p>Treat every peer with respect and kindness. No derogatory remarks, abusive language, or discrimination will be tolerated.</p>
+      </div>
+      <div class="legal-section">
+        <h3>Rule 2: Zero Tolerance for Cyberbullying</h3>
+        <p>Bullying, mocking, or threatening any user results in instant permanent suspension.</p>
+      </div>
+      <div class="legal-section">
+        <h3>Rule 3: Academic Honesty</h3>
+        <p>Collaborate to solve problems and understand concepts. Cheating or sharing illicit exam leaks is strictly forbidden.</p>
+      </div>
+      <div class="legal-section">
+        <h3>Rule 4: Clean & Wholesome Content</h3>
+        <p>Sharing vulgar, sexual, violent, or hateful messages or media is prohibited and grounds for permanent ban.</p>
+      </div>
+      <div class="legal-section">
+        <h3>Rule 5: Anti-Doxxing & Privacy</h3>
+        <p>Never share phone numbers, addresses, or private photos of peers without explicit permission.</p>
+      </div>
+      <div class="legal-section">
+        <h3>Rule 6: Authentic Identity</h3>
+        <p>Do not impersonate educators, developers, platform staff, or fellow peers.</p>
+      </div>
+      <div class="legal-section">
+        <h3>Rule 7: Study-Focused Groups</h3>
+        <p>Keep study groups focused on coursework. Do not spam off-topic forwards or unsolicited memes.</p>
+      </div>
+      <div class="legal-section">
+        <h3>Rule 8: Duty to Report Abuse</h3>
+        <p>Report harassment or misconduct immediately to protect your fellow peers.</p>
+      </div>
+      <div class="legal-section">
+        <h3>Rule 9: Account Security</h3>
+        <p>Protect your login credentials. You are accountable for all interactions conducted from your account.</p>
+      </div>
+      <div class="legal-section">
+        <h3>Rule 10: Ethical Digital Citizenship</h3>
+        <p>Represent yourself and Krishna Developments with ethical conduct, kindness, and dedication to knowledge sharing.</p>
+      </div>
+    </div>
+
+    <!-- TAB 4: DELETED CHAT POLICY -->
+    <div class="legal-card" id="tab-deleted">
+      <h2 class="legal-title">🛡️ Deleted Chat & Safety Moderation Policy</h2>
+      <div class="legal-meta">Anti-Bullying Audit Archive • Compliance with IT Intermediary Rules, 2021 & Digital Safety</div>
+
+      <div class="legal-section">
+        <h3>1. Immediate Client-Side Deletion</h3>
+        <p>When a user selects <strong>"Delete for Everyone"</strong> or <strong>"Delete for Me"</strong>, the message is immediately removed from the active conversation view on all devices. No deleted messages remain visible in student chat screens.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>2. Why Deleted Messages are Audited</h3>
+        <p>In online student environments, offenders sometimes send hurtful, threatening, or vulgar content and quickly tap "Delete for Everyone" to erase evidence before a victim can capture proof. To protect victims, Chatnya maintains a cryptographic audit snapshot in a secure administrative archive (<code>deletedMessages</code>).</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>3. Restricted Administrative Access Only</h3>
+        <p>Deleted chat audit records are <strong>STRICTLY RESTRICTED</strong> to authorized platform administrators and discipline coordinators. No peer or regular user can access or view deleted message archives.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>4. Legal & Child Protection Compliance</h3>
+        <p>This policy complies with Rule 3(1)(h) of the Information Technology (Intermediary Guidelines) Rules, 2021, which requires platforms to preserve records for investigating cyber offenses.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>5. Retention Schedule & Permanent Purging</h3>
+        <p>Deleted message audit logs follow a rolling <strong>30-to-90 day security retention window</strong>. Routine deleted records not linked to an active safety report or bullying complaint are permanently purged. Account deletion permanently eradicates all user chats after 7 days.</p>
+      </div>
+
+      <div class="legal-section">
+        <h3>6. Appeals & Grievance Redressal</h3>
+        <p>Any user subject to disciplinary action has the right to an administrative review. For appeals or inquiries, contact: <strong>chatnya@krishna-devlopments.site</strong>.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Krishna Developments • Chatnya Educational Messaging Platform</p>
+      <p style="margin-top: 4px; font-size: 11.5px;">Architect: Krishna Kushwaha • Krishna Developments • Sonbhadra, Uttar Pradesh, India</p>
+    </footer>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.legal-card').forEach(card => card.classList.remove('active'));
+
+      const targetCard = document.getElementById('tab-' + tabId);
+      if (targetCard) targetCard.classList.add('active');
+
+      const tabs = ['tc', 'privacy', 'rules', 'deleted'];
+      const idx = tabs.indexOf(tabId);
+      const btns = document.querySelectorAll('.tab-btn');
+      if (idx !== -1 && btns[idx]) btns[idx].classList.add('active');
+    }
+  </script>
+</body>
+</html>
